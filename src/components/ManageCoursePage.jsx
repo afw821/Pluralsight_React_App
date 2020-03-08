@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import CourseForm from "./CourseForm.jsx";
-import * as courseApi from "../api/courseApi";
+import courseStore from "../stores/courseStore";
 import { toast } from "react-toastify";
+import * as courseActions from "../actions/courseActions";
 
 const ManageCoursePage = props => {
   const [errors, setErrors] = useState({});
@@ -16,8 +17,7 @@ const ManageCoursePage = props => {
   useEffect(() => {
     //this is what will populate the form with the info of course you clicked on
     const slug = props.match.params.slug; // from the path /courses/:slug
-    if (slug)
-      courseApi.getCourseBySlug(slug).then(_course => setCourse(_course));
+    if (slug) setCourse(courseStore.getCourseBySlug(slug));
   }, [props.match.params.slug]); //if dependencies listed in the array change, then the effect will re-run
 
   function handleChange({ target }) {
@@ -43,8 +43,8 @@ const ManageCoursePage = props => {
   function handleSubmit(event) {
     event.preventDefault();
     if (!formIsValid()) return;
-    courseApi.saveCourse(course).then(() => {
-      props.history.push("/courses");
+    courseActions.saveCourse(course).then(() => {
+      props.history.push("/courses"); //takes us back to courses page when saved
       toast.success("Course Saved.");
     });
   }

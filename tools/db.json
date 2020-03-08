@@ -23,7 +23,7 @@
     },
     {
       "id": 4,
-      "title": "Building a JavaScript Development Environment",
+      "title": "Building a JavaScript Development Environment 2",
       "slug": "javascript-development-environment",
       "authorId": 1,
       "category": "JavaScript"
@@ -69,14 +69,6 @@
       "slug": "web-components-shadow-dom",
       "authorId": 1,
       "category": "HTML5"
-    },
-    {
-      "id": 11,
-      "slug": "nathan-bob-s-course-on-coding",
-      "title": "Nathan Bob's Course on coding",
-      "authorId": 1,
-      "category": "JS",
-      "createdAt": 1583614102611
     }
   ],
   "authors": [

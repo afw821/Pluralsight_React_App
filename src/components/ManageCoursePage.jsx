@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CourseForm from "./CourseForm.jsx";
 import * as courseApi from "../api/courseApi";
 import { toast } from "react-toastify";
@@ -13,6 +13,13 @@ const ManageCoursePage = props => {
     category: ""
   });
 
+  useEffect(() => {
+    //this is what will populate the form with the info of course you clicked on
+    const slug = props.match.params.slug; // from the path /courses/:slug
+    if (slug)
+      courseApi.getCourseBySlug(slug).then(_course => setCourse(_course));
+  }, [props.match.params.slug]); //if dependencies listed in the array change, then the effect will re-run
+
   function handleChange({ target }) {
     setCourse({
       ...course,
@@ -25,8 +32,8 @@ const ManageCoursePage = props => {
     const _errors = {};
 
     if (!course.title) _errors.title = "Title is Required";
-    if (!course.authorId) _errors.authorId = "Title is Required";
-    if (!course.category) _errors.category = "Title is Required";
+    if (!course.authorId) _errors.authorId = "Author is Required";
+    if (!course.category) _errors.category = "Category is Required";
 
     setErrors(_errors);
     //form is valid if the errors object has no properties

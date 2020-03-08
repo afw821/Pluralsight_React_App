@@ -9,6 +9,8 @@ function CourseForm(props) {
         id="title"
         label="Title"
         onChange={props.onChange}
+        value={props.course.title}
+        error={props.errors.title}
         name="title"
       />
       <SelectList
@@ -16,6 +18,7 @@ function CourseForm(props) {
         onChange={props.onChange}
         value={props.course.authorId || ""}
         name="authorId"
+        error={props.errors.authorId}
       />
 
       <TextInput
@@ -24,6 +27,7 @@ function CourseForm(props) {
         onChange={props.onChange}
         name="category"
         value={props.course.category}
+        error={props.errors.category}
       />
 
       <input type="submit" value="Save" className="btn btn-primary" />

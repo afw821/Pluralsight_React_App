@@ -16,6 +16,7 @@ const SelectList = props => {
           <option value="2">Scott Allen</option>
         </select>
       </div>
+      {props.error && <div className="alert alert-danger">{props.error}</div>}
     </div>
   );
 };

@@ -8,23 +8,9 @@
       "category": "JavaScript"
     },
     {
-      "id": 2,
-      "title": "React: The Big Picture",
-      "slug": "react-big-picture",
-      "authorId": 1,
-      "category": "JavaScript"
-    },
-    {
       "id": 3,
       "title": "Creating Reusable React Components",
       "slug": "react-creating-reusable-components",
-      "authorId": 1,
-      "category": "JavaScript"
-    },
-    {
-      "id": 4,
-      "title": "Building a JavaScript Development Environment 2",
-      "slug": "javascript-development-environment",
       "authorId": 1,
       "category": "JavaScript"
     },
@@ -55,13 +41,6 @@
       "slug": "architecting-applications-dotnet",
       "authorId": 1,
       "category": "Software Architecture"
-    },
-    {
-      "id": 9,
-      "title": "Becoming an Outlier: Reprogramming the Developer Mind",
-      "slug": "career-reboot-for-developer-mind",
-      "authorId": 1,
-      "category": "Career"
     },
     {
       "id": 10,

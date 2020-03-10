@@ -6,6 +6,7 @@ import * as courseActions from "../actions/courseActions";
 
 const ManageCoursePage = props => {
   const [errors, setErrors] = useState({});
+  const [courses, setCourses] = useState(courseStore.getCourses());
   const [course, setCourse] = useState({
     id: null,
     slug: "",
@@ -15,10 +16,22 @@ const ManageCoursePage = props => {
   });
 
   useEffect(() => {
+    courseStore.addChangeListener(onChange);
     //this is what will populate the form with the info of course you clicked on
     const slug = props.match.params.slug; // from the path /courses/:slug
-    if (slug) setCourse(courseStore.getCourseBySlug(slug));
-  }, [props.match.params.slug]); //if dependencies listed in the array change, then the effect will re-run
+
+    if (courses.length === 0) {
+      courseActions.loadCourses();
+    } else if (slug) {
+      setCourse(courseStore.getCourseBySlug(slug));
+    }
+    //remove the change listener
+    return () => courseStore.removeChangeListener(onChange); //removes listener
+  }, [courses.length, props.match.params.slug]); //if dependencies listed in the array change, then the effect will re-run
+
+  function onChange() {
+    setCourses(courseStore.getCourses());
+  }
 
   function handleChange({ target }) {
     setCourse({
